@@ -1,0 +1,392 @@
+Git
+....
+
+VERSION CONTROLLING:
+This is the process of preserving older and latest versions of the code.
+All the developers working on a project upload their code into a version controlling server.
+The version controlling server accepts the code coming from various developers and creates one integrated project
+The process of uploading into version controlling is called checking
+The next day when the developers download the code they will find all the code created by all the team members.
+Downloading is called checkout
+
+Types of version controlling:
+
+1. Centralised version controlling 
+2. Distributed version controlling 
+
+1. Centralised version controlling :
+
+In CVC the version controlling happens only on a remote server. Developers simply upload their code into this server 
+E.G: SVN (Sub version)
+
+2. Distributed version controlling:
+
+In DVC a local repository is installed on every developers machine.
+Initially the developer pushes the code into this local repository where version controlling happens at the level of
+individual developer. Later the code is sent into the remote repository where version controlling happens at the 
+level of the complete team
+E.g:  Git
+
+Git
+----
+
+Installing Git on Windows:
+1. Open https://git-scm.com/download
+2. Download git for windows  --> Install it
+3. Go to all programs and we will find an application Git Bash. This is the command prompt of git where we can execute git commands
+
+
+Installing Git on Linux (Ubuntu)
+1. Sudo apt-get update
+2. sudo apt-get install -y git
+
+To check the version of git
+git --version
+
+Arhitecture of a developers machine:
+Working directory  ---> Staging Area  --->  Local Repository
+
+Git when working on the local machine uses three sections
+1.Working directory
+2. Staging Area
+3. Local Repository
+
+Working directory:  The folder where the developer creates the code is called working dir and the files present here are 
+initially called untracked files
+
+Stagging area: This is a temporary area (git memory) where the files are sent. These files are called stagged files
+
+Local Repository:
+The file from stagging area are sent into the local repository where version controlling happens.
+These files are called committed files.
+
+Working			Stagging		LR
+Directory       --->     Area		--->   
+
+git add <file name>	To move the file to Stagging Area
+git commit -m "Message"  To move from 
+git reset <filename>
+git rm --cached <file name>
+
+1. Initialising the git repo
+	git init
+2. Setting username and email globally
+	git config --global user.name "prasad"
+	git config --global user.email " "
+3. To send files into stagging area
+	git add filename
+4. To send multiple files into stagging area
+	git add file1 file2 file3
+5. To send all the files and folder into stagging area 
+	git add .
+	Note:  . represents current working directory in linux
+6. To remove files from stagging area and bring them to untracked section
+	git rm --cached filename
+	or
+	git reset filename
+7. To send files from stagging to LR
+	git commit -m "Some Message"
+8. To find the status of git
+	git status
+	This command will show what is the status of untracked section and stagged section
+9. To see the list of commits that are done
+	git log
+	git log will show detaild info about every commit ie the person who commited, commit id, time of commit etc
+10. To see only the commit id and commit msg
+	git log --oneline
+
+.gitignore
+-----------
+
+This is a hidden file which is used for saving private data
+Any file o folder whose name is placed in .gitignore file will be ignored by git.ie git will not show them as untracked files and 
+any of the git commands will not effect these files
+
+touch file1 file2 file3 file4
+cat > .gitignore
+file1
+file2
+file3
+file4
+Press Ctrl+d to come out of cat command (EOF)
+
+git status will no longer show the file1 -- file4 in untracked section
+
+Git Branching:
+===============
+
+This is a feature of git using which we can parallelly work on multiple functionalities of the same project
+This will help in creating the work in an uncluttered way 
+
+1. At the time of creating the branch whatever is the commit history of master branch that will be copied into the new branch
+2. Files created or modified on a branch will belong to that branch only if they are committed from that branch
+
+Branch commands:
+----------------
+
+1. To see the list of local branches
+	git branch
+2. To see the list of all branches (local,remote)
+	git branch -a
+3. To create a branch
+	git branch branchname
+4. To move into a branch
+	git checkout branchname
+5. To create a branch and move into it with one command
+	git branch -b branchname
+6. To merge a branch
+	git merge branchname
+7. To delete a branch which has been merged with master (Soft Delete)
+	git branch -d branchname
+8. To delete a branch which is not merged with master ( Hard Delete )
+	git branch -D branchname
+
+Working on Remote Git repository
+---------------------------------
+
+1. Open Github.com  --> Sign up for a free account
+2. Signing into that account
+3. To create a new repsository on github
+	Click on + on Top right corner --> New Repository
+	Give some name for the repository
+	Click on "Create repository"
+4. To push our local repository into github
+	Goto  "push an existing repository from the command line"
+	Copy the 1st command and paste in git bash
+	This will create a link between the local repository and remote repository
+	copy the second command and paste in git bash
+	Enter your username and password
+
+
+Downloading for github:
+-----------------------
+This is called checkout and it can be done in 3 ways 
+1. git clone
+2. git fetch
+3. git pull
+
+GIT Fork:
+-----------
+A fork is a copy of a repository. Forking a repository allows you to freely experiment with changes without affecting the original project
+copy the repository from one remote account to another remote account. 
+
+git clone:
+----------
+This will download the complete remote repository from the git hub. It will download the entire code irrespective of 
+whether that code is already present on our machine or not
+
+Syntax:
+	git clone github-url
+
+
+GitHub signup
+
+25th May 2018:
+
+git Fetch:
+----------
+This command wll work only wen the code is modified ie the code present on local repository and te remote repository are not same.
+git fetch will download only the modified files and place them on a remote branh. we can swith into that branch, check if the changes are 
+acceptable and then merge it with the master branch
+
+1. open github.com  --> Go to the repositry that we creted
+2. Click on some file  -- >click on edit icon
+3. Add some changes to this file  --> click on commit changes
+4. Now open git bash
+	git fetch
+	This will download the changes and place on remote ranch
+5. To see the list of all banches git branch -a
+6. switch to the remote branch
+	git checkout remote branch
+	git checkout master
+	git merge remote/origin/master
+	
+git pull:
+--------
+	This will also work only if there are some modifications but git pull will download the modified files and directly merge
+	them with the master branch
+
+1. Open github.com  --> go to our repository
+2  click on some files --> click on edit  --> make some changes to the files  --> click on commit changes
+3. open git bash
+4, git pull
+	we will see the modified file will e automatically plaed on the master branch
+
+git rebase:  (Fast Forward merge)
+-----------------------------------
+
+This is used for performing a fast forward merge of the commits ie the commmits on the branch that is rebased will be
+appended to the master branch HEAD commmit or the latest commit
+
+1. On master:
+	touch f1
+	git add .
+	git commit -m "a"
+	touch f2
+	git add .
+	git commit -m "b"
+
+2. To check the commit history on master branch
+	git log --oneline
+3. Create a test branch and create some more commits on it
+	git checkout -b test
+	touch f3
+	git add .
+	git commit -m "e"
+	touch f4
+	git add .
+	git commit -m "d"
+4. To check commit history on test branc
+	git log --oneline
+
+This will show all commits from maser and tst
+a	b
+		c	d
+		test
+5. Go back to master branch and crate some more commits
+	touch f5
+	git add .
+	git commit -m "e"
+	touch f6
+	git add .
+	git commit -m "f"
+
+a	b	e	f
+		c	d
+		test branch
+6. Rebase test branch with master
+	git checkout test
+	git rebase master
+	git checkout master
+	git merge test
+
+		master branch
+a	b	e	f	c	d
+
+git rebase can also be used for rearranging the commit history 
+This can be done using rebase in interactive mode 
+	git rebase -i HEAD~4
+	
+	Note: "4" represents top 4 commits that we want to edit
+	The above command will open commmit history in vi editor, now rearrange the order save and quit
+To check the commit history rearranged or not
+
+	git log --oneline
+git rebase --abort
+
+GIT SQUASH:
+-----------
+	Combining multiple commits as one single commit is called squash
+	This can also be performed by using git rebase command
+	In squashing the latest commits will be merged with older commits
+1. git rebase -i HEAD~3
+	In vi editor remove the word pick and replace it with squash for the last 2 commits Save & Quit
+	Now if we execute git log --oneline we will see the last 2 commits are merged with the 3rd last commit
+
+git cherrypicking:
+------------------
+	This is used for picking up specific commits from a branch and add them to the master branch
+Create a test branch and create some commits on it
+	git checkout -b test
+	on the test branch
+	touch f1
+	git add .
+	git commit -m "b"
+	
+	touch f2
+	git add .
+	git commit -m "c"
+
+	touch f3
+	git add .
+	git commit -m "d"	
+
+To see the total commit history of test branch 
+	git log --oneline
+	copy the ids of the commits that we want to cherry pick
+	Move to the master branch
+	git checkout master
+	git cherry-pick commitid-that-we-picked-on-test-branch
+To cherrypick multiple commits
+	git cherry-pick commitid1 commitid2 commitid3
+
+Git amend:
+-----------
+	This is used for editing the latest commit ie even after creating the commit it is possible to modify some files
+and add it to the current commit.
+
+1. Create some commits in git
+2. Modify any file
+	git commit --amend -m "Some Message"
+	The above command will insert the modifications into the latest commits
+3. git log --oneline
+	This will show that the latest commit is edited. New commits are not created
+
+git reflog:
+-----------
+	This is used for seeing the entire commit history ie orphaned commits ( commits which are modified using amend command )
+and acive commits
+	reflog command can also be used for seeing the commit history based on time 
+	To see all the commits created before 3 months
+	git reflog HEAD@{3.months.ago}
+
+	git reflog HEAD@{2018=05-27}  --to see commits on or before 27th May 2018
+
+Tagging of commits:
+-------------------
+	Tags are used for placing bookmarks on commits, these bookmarks can be related to specific releases of the software
+or different sprint cycles
+	Tagging is of 2 types:
+	1. Light weigh tag
+	2. Annoted tag
+
+1. Light weight tag:
+	git tag tagname
+	To see the list of all the tags
+	git tag
+2. Annoted tag
+	To create an annoted tag
+	git tag -a tagname -m "Some message"
+	
+To show info about an annotatd tag
+	git show tagname
+To delete a tag
+	git tag -d tagname
+To tag an older commit
+	git tag -a tagname -m "Some msg" commitid
+To push all the tag into the github
+	git push --tags
+
+Git stash:
+----------
+	This is used for keeping the working directory, stagging area in a particular state and continue working on other components
+
+To stash the stagged files
+	git stash
+To stash the untracked files
+	git stash -u
+To stash the .gitignore files
+	git stash -a
+To see the list of all the stashes
+	git stash list
+To revert a stash
+	git stash pop ( This will unstash the latest stash )
+To unstash a specific stash
+	git stash pop stash@{2}
+
+touch f1
+git add .
+git status
+git stash
+git status   -- Now f1 does not show as in staggin area
+
+touch f8
+git stash -u   -- To stash the untracked files
+
+
+
+
+
+
+
+
