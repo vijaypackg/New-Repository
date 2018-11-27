@@ -383,6 +383,112 @@ git status   -- Now f1 does not show as in staggin area
 touch f8
 git stash -u   -- To stash the untracked files
 
+-----------------------------------------
+yum install docker
+    3  sudo amazon-linux-extras install docker
+    4  docker -v
+    5  clear
+    6  yum upate
+    7  yum update
+    8  yum install update
+    9  docker image
+   10  docker images
+   11  sudo docker images
+   12  Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+   13  docker service start
+   14  service docker start
+   15  docker images
+   16  docker pull ubuntu
+   17  docker run -it ubuntu
+   18  docker ps
+   19  docker history
+   20  history
+   21  yum install doker
+   22      2  yum install docker
+   23      3  sudo amazon-linux-extras install docker
+   24      4  docker -v
+   25      5  clear
+   26      6  yum upate
+   27      7  yum update
+   28      8  yum install update
+   29      9  docker image
+   30     10  docker images
+   31     11  sudo docker images
+   32     12  Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+   33     13  docker service start
+   34     14  service docker start
+   35     15  docker images
+   36     16  docker pull ubuntu
+   37     17  docker run -it ubuntu
+   38     18  docker ps
+   39     19  docker history
+   40     20  history
+   41  clear
+   42  docker ps
+   43  docker images
+   44  docker ps -p
+   45  docker images -p
+   46  docker images
+   47  docker pull jenkins
+   48  docker run jenkins
+   49  docker run -p 8585:8080 jenkins
+   50  docker run -p 8585:8080 --name jenkins_server jenkins
+   51  docker run --name ubuntu-git -it ubuntu
+   52  docker commit ubuntu-git vijaypackg
+   53  docker images
+   54  docker loin
+   55  docker login
+   56  docker push vijaypackg/vijaypackg
+   57  docker push vijaypackg/ubuntu-git
+   58  docker images
+   59  docker push vijaypackg/ubuntu
+   60  docker push vijaypackg/jenkins
+   61  docker push repo1/jenkins
+   62  history
+
+ 50  docker run -p 8585:8080 --name jenkins_server jenkins
+   51  docker run --name ubuntu-git -it ubuntu
+   52  docker commit ubuntu-git vijaypackg
+   53  docker images
+   54  docker loin
+   55  docker login
+   56  docker push vijaypackg/vijaypackg
+   57  docker push vijaypackg/ubuntu-git
+   58  docker images
+   59  docker push vijaypackg/ubuntu
+   60  docker push vijaypackg/jenkins
+   61  docker push repo1/jenkins
+   62  history
+   63  docker images
+   64  docker rmi jenkins
+   65  docker ps
+   66  docker rmi jenkins
+   67  docker kill 45c3f605f63b
+   68  docker rmi jenkins
+   69  docker rmi -f jenkins
+   70  docker images
+   71  docker tag original_ubuntu new_ubuntu
+   72  docker tag original_ubuntu new_ubuntu1
+   73  docker ps
+   74  docker ps -a
+   75  docker container ls
+   76  docker stop ubuntu
+   77  docker stop  condescending_engelbart
+   78  docker stop 61a5eae31980
+   79  docker 61a5eae31980 ps
+   80  docker ps
+   81  docker run -itd --name myubuntu ubuntu
+   82  docker ps
+   83  docker run exec -it 161f032529e3/bin/bash
+   84  docker login
+   85  docker run exec -it 161f032529e3/bin/bash
+   86* docker run exec -it ubuntu/bin/bash
+   87  docker run exec -it 161f032529e3/bash
+   88  docker run exec -it 161f032529e3
+   89  docker run exec -it 161f032529e3/bash
+   90  docker exec -it 161f032529e3/bash
+   91  docker exec -it 161f032529e3 bash
+
 
 
 
