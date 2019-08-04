@@ -1,0 +1,22 @@
+node('agent-slave'){
+  stage('SCM Checkout'){
+   git 'https://github.com/vijaypackg/login.git'
+  }
+  stage('Maven Package'){
+    def mvnHome = tool name: 'Maven', type: 'maven'
+    def mvn = "${mvnHome}/bin/mvn"
+    sh "${mvn} clean package"
+  }
+  stage('Docker build image'){
+      sh 'docker build -t vijaypackg/login-webapp:1.1 .'
+  }
+  stage('Docker push image'){
+      withCredentials([string(credentialsId: 'dockerhubpswd', variable: 'dockerpswd')]) { 
+      sh "docker login -u vijaypackg -p ${dockerpswd}"
+  }
+      sh 'docker push vijaypackg/login-webapp:1.1'
+  }
+  stage('Run Docker Container'){
+      sh 'docker run --name webapp -d -p 8080:8080 vijaypackg/login-webapp:1.1'
+}
+}
