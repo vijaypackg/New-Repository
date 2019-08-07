@@ -6,3 +6,36 @@
       register: result    
     - copy: src=../filetocopy.zip dest=/tmp/filetocopy.zip
       when: result|success
+      
+      
+    #--------------------------------
+- name: get file stat to be able to perform a check in the following task
+  local_action: stat path=/path/to/file
+  register: file
+
+- name: copy file if it exists
+  copy: src=/path/to/file dest=/destination/path
+  when: file.stat.exists
+  
+  #--------------
+  
+  - name: get file stat to be able to perform check in the following task
+  stat: path=/path/to/file
+  register: file
+
+- name: copy file if it exists
+  copy: src=/path/to/file dest=/destination/path
+  when: file.stat.exists
+  
+  #------------------
+  
+  tasks:
+- copy: src=../filetocopy.zip dest=/tmp/filetocopy.zip
+  failed_when: false
+  
+  #-------------------
+  #Fileglob permits a lookup of an eventually present file.
+
+- name: copy file if it exists
+  copy: src="{{ item }}" dest=/destination/path
+  with_fileglob: "/path/to/file"
