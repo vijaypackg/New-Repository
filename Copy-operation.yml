@@ -1,0 +1,8 @@
+- hosts: 127.0.0.1 
+  connection: local
+  tasks:
+    - name: copy local filetocopy.zip to remote if exists
+    - shell: if [[ -f "../filetocopy.zip" ]]; then /bin/true; else /bin/false; fi;
+      register: result    
+    - copy: src=../filetocopy.zip dest=/tmp/filetocopy.zip
+      when: result|success
